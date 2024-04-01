@@ -1,6 +1,13 @@
 Install Fish terminal and make it default.
+Check the location of the Fish shell binary by running:
+    which fish
 
-First clone odoo from repo, then instal postgres.
+Then change the default shell for your user by running the following command:
+    chsh -s /usr/bin/fish
+Now logout once to view changes.
+
+
+Clone odoo from repo, then instal postgres.
 
 To install postgres-15:
     sudo apt install postgresql-15 postgresql-client-15 postgresql-contrib
@@ -35,13 +42,6 @@ To list psql users: (run when on hasnain user)
 To list databases:
     psql -l
 
-    
-
-To run odoo directly from CLI:
-    ./odoo-bin -c /home/hasnain/Downloads/odoo/debian/odoo.conf -i base
-
--i base is used to initialize the database
-
 
 
 odoo.conf file settings to do:
@@ -56,3 +56,17 @@ db_password = odoo17
 ;addons_path = /home/hasnain/Downloads/odoo/addons/
 default_productivity_apps = True
 http_port = 17069
+
+
+
+To run odoo directly from CLI:
+    ./odoo-bin -c /home/hasnain/Downloads/odoo/debian/odoo.conf -i base
+
+
+-i base is used to initialize the database
+
+
+
+
+Navigate to odoo repo where odoo-bin is located then we can run odoo in cli by this:
+    ./odoo-bin -c /home/hasnain/Downloads/odoo/debian/odoo.conf
