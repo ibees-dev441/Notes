@@ -1,0 +1,39 @@
+First open pycharm and click open and select 'odoo' folder.
+
+Now open terminal and type:
+
+    sudo apt install python3.11-venv
+    python3.11 -m venv odoo_venv
+
+
+if it doesnot activate your venv then type:
+    source /path-to-venv/bin/activate
+
+
+Then run:
+    pip install -r requirements.txt
+
+if it gives errors, specially for python-ldap & psycopg2 then first install "python3-dev"
+    sudo apt-get install python3-dev
+
+Now re-run the installation of there two:
+    pip install pip install psycopg2 python-ldap
+
+
+Now you have a odoo folder and in that you have 2 folders:
+odoo
+odoo-venv
+
+Just close the project and also delete the .idea folder.
+Again open the pycharm, select open project, click odoo parent folder
+For the environment, click existing, navigate to odoo/odoo-venv/bin/python3.11
+If pycharm asks, make it default interpreter.
+
+Now click on edit configurations, add a new python configuration for this project.
+in script give full path to odoo-bin
+in parameters write this:
+    -c <full path to odoo.conf>
+working directory should be the main odoo folder and all done. 
+if you still get some package error like "pypdf2"
+rerun this in venv
+pip install -r requirements.txt
