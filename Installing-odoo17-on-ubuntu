@@ -1,0 +1,58 @@
+Install Fish terminal and make it default.
+
+First clone odoo from repo, then instal postgres.
+
+To install postgres-15:
+    sudo apt install postgresql-15 postgresql-client-15 postgresql-contrib
+
+
+To display all postgres versions installed:
+    dpkg -l | grep postgres
+
+
+To display all running instances of postgres, postgres-15 should be in running state, ignore if simple postgres is in active(exited) state.
+    sudo systemctl status 'postgresql*'
+
+
+
+After installing postgres, create a new user named 'odoo':
+    sudo -u postgres createuser --createdb --username postgres --no-createrole --no-superuser --pwprompt odoo
+
+    
+Set the owner of the existing database "odoo17_db" to the user "odoo":
+    sudo -u postgres psql -c 'ALTER DATABASE odoo17_db OWNER TO odoo;'
+
+    
+Grant necessary permissions to the user "odoo" on the database "odoo17_db", if needed:
+    sudo -u postgres psql -c 'GRANT ALL PRIVILEGES ON DATABASE odoo17_db TO odoo;'
+
+
+
+To list psql users: (run when on hasnain user)
+    sudo -u postgres psql -c '\du'
+
+
+To list databases:
+    psql -l
+
+    
+
+To run odoo directly from CLI:
+    ./odoo-bin -c /home/hasnain/Downloads/odoo/debian/odoo.conf -i base
+
+-i base is used to initialize the database
+
+
+
+odoo.conf file settings to do:
+[options]
+; This is the password that allows database operations:
+; admin_passwd = admin
+db_host = localhost
+db_port = 5432
+db_name = odoo17_db
+db_user = odoo
+db_password = odoo17
+;addons_path = /home/hasnain/Downloads/odoo/addons/
+default_productivity_apps = True
+http_port = 17069
