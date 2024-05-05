@@ -17,7 +17,7 @@ if it gives errors, specially for python-ldap & psycopg2 then first install "pyt
     sudo apt-get install python3-dev
 
 Now re-run the installation of there two:
-    pip install pip install psycopg2 python-ldap
+    pip install psycopg2 python-ldap
 
 
 Now you have a odoo folder and in that you have 2 folders:
