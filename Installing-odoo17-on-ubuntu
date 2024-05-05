@@ -124,7 +124,8 @@ First, you'll need to log in to your PostgreSQL server with a user that has the 
    db_password = password
    db_name = dbname
 
-   Replace `localhost` and `5432` with the appropriate host and port if your PostgreSQL server is not running on the default localhost and port. Also, replace `username`, `password`, and `dbname` with the credentials and database name you created earlier.
+   Replace `localhost` and `5432` with the appropriate host and port if your PostgreSQL server is not running on the default localhost and port. Also, replace `username`, `password`, and `dbname` 
+with the credentials and database name you created earlier.
 
 
 
