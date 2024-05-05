@@ -21,9 +21,13 @@ To display all running instances of postgres, postgres-15 should be in running s
     sudo systemctl status 'postgresql*'
 
 
-
+(Alternate method of creating user and database is given on the last; if this method dont work, try that).
 After installing postgres, create a new user named 'odoo':
     sudo -u postgres createuser --createdb --username postgres --no-createrole --no-superuser --pwprompt odoo
+
+
+To create a new PostgreSQL database:
+    sudo -u postgres createdb -O odoo odoo17_db   (-0 is already setting odoo user the owner of this database, so below command is not necessary)
 
     
 Set the owner of the existing database "odoo17_db" to the user "odoo":
@@ -70,3 +74,66 @@ To run odoo directly from CLI:
 
 Navigate to odoo repo where odoo-bin is located then we can run odoo in cli by this:
     ./odoo-bin -c /home/hasnain/Downloads/odoo/debian/odoo.conf
+
+
+
+
+
+
+
+First, you'll need to log in to your PostgreSQL server with a user that has the necessary privileges to create databases and users. Typically, this would be the `postgres` user or another superuser.
+
+1. **Log in to PostgreSQL:**
+       psql -U postgres
+   
+
+
+2. **Create a new database:**
+       CREATE DATABASE odoo17_db;
+  
+   Replace `dbname` with the name you want to give to your database.
+
+
+
+
+3. **Create a new user:**
+       CREATE USER odoo WITH PASSWORD 'odoo17';
+   
+   Replace `username` with the desired username and `password` with the password you want to set for this user.
+
+
+
+
+4. **Grant privileges to the user on the database:**
+       GRANT ALL PRIVILEGES ON DATABASE odoo17_db TO odoo;
+
+   Replace `dbname` with the name of the database you created in step 2, and `username` with the name of the user you created in step 3.
+
+
+
+
+5. **Configure Odoo to use the PostgreSQL database:**
+
+   You need to edit the Odoo configuration file (`odoo.conf`) to specify the PostgreSQL database connection details.
+
+   conf
+   [options]
+   db_host = localhost
+   db_port = 5432
+   db_user = username
+   db_password = password
+   db_name = dbname
+
+   Replace `localhost` and `5432` with the appropriate host and port if your PostgreSQL server is not running on the default localhost and port. Also, replace `username`, `password`, and `dbname` with the credentials and database name you created earlier.
+
+
+
+6. **Restart Odoo:**
+
+   After making changes to the configuration file, restart your Odoo service for the changes to take effect.
+
+  
+   sudo service odoo-server restart
+   
+
+That's it! You've created a database and a user in PostgreSQL and connected it with Odoo.
