@@ -1,0 +1,20 @@
+sudo apt install postgresql-15 postgresql-client-15 postgresql-contrib
+sudo systemctl status 'postgresql*'
+sudo -u postgres createuser --createdb --username postgres --no-createrole --no-superuser --pwprompt odoo
+sudo -u postgres createdb -O odoo odoo17_db
+sudo -u postgres createdb odoo odoo17_db
+sudo -u postgres createdb odoo17_db
+sudo -u postgres psql -c 'ALTER DATABASE odoo17_db OWNER TO odoo;'
+sudo -u postgres psql -c 'GRANT ALL PRIVILEGES ON DATABASE odoo17_db TO odoo;'
+sudo -u postgres psql -c '\du'
+psql -l
+sudo -i -u postgres
+cd odoo17/
+python3.11 -m venv odoo_venv
+
+Now open vscode to use bash shell, as the following command will not work on fish terminal.
+source odoo_venv/bin/activate
+pip install -r /home/ahmed/odoo17/requirements.txt 
+cd ../../
+ls
+./odoo-bin -c /home/ahmed/odoo17/odoo.conf -i base
