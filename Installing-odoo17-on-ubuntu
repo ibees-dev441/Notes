@@ -22,6 +22,7 @@ To display all running instances of postgres, postgres-15 should be in running s
 
 
 (Alternate method of creating user and database is given on the last; if this method dont work, try that).
+IGNORE the can't change directory error.
 After installing postgres, create a new user named 'odoo':
     sudo -u postgres createuser --createdb --username postgres --no-createrole --no-superuser --pwprompt odoo
 
