@@ -76,10 +76,7 @@ Navigate to odoo repo where odoo-bin is located then we can run odoo in cli by t
     ./odoo-bin -c /home/hasnain/Downloads/odoo/debian/odoo.conf
 
 
-
-
-
-
+----------------------------------------------------------------------------------------------------------------------------
 
 First, you'll need to log in to your PostgreSQL server with a user that has the necessary privileges to create databases and users. Typically, this would be the `postgres` user or another superuser.
 
