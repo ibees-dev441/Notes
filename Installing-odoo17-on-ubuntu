@@ -46,6 +46,9 @@ To list psql users: (run when on hasnain user)
 To list databases:
     psql -l
 
+if it gives error, run this first, then try again:
+     sudo -i -u postgres
+
 
 
 odoo.conf file settings to do:
